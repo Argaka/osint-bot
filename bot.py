@@ -464,7 +464,7 @@ async def vturl_cmd(m: types.Message):
             f"🟡 <b>Sospechoso:</b> {suspicious}/{total}\n"
             f"🟢 <b>Limpio:</b> {harmless}/{total}\n"
             f"⚪ <b>Sin detectar:</b> {undetected}/{total}\n\n"
-            f"🔗 <a href='https://www.virustotal.com/gui/url/{urllib.parse.quote(url_target, safe=\"\")}'>Ver reporte completo</a>"
+            f"🔗 <a href='https://www.virustotal.com/gui/url/{urllib.parse.quote(url_target, safe='')}'>Ver reporte completo</a>"
         )
         await status_msg.edit_text(resp, disable_web_page_preview=True)
     except Exception as e:
