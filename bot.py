@@ -1159,10 +1159,14 @@ async def on_startup(bot: Bot):
 async def on_shutdown(bot: Bot):
     await bot.delete_webhook()
 
+async def health(request):
+    return web.Response(text="OK")
+
 def main():
     dp.startup.register(on_startup)
     dp.shutdown.register(on_shutdown)
     app = web.Application()
+    app.router.add_get("/", health)
     SimpleRequestHandler(dispatcher=dp, bot=bot, secret_token=SECRET).register(app, path=WEBHOOK_PATH)
     setup_application(app, dp, bot=bot)
     web.run_app(app, host="0.0.0.0", port=PORT)
